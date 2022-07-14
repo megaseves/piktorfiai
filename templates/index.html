@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Piktor Fiai bt.</title>
+    <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+{% block header %}
+    <div class="header">
+        <div class="menu-center">
+            <h1 class="logo"><a href="{{ url_for('main_page') }}">Piktor Fiai</a></h1>
+        </div>
+        <div class="menu-right">
+            <ol class="menu">
+                <li><a href="{{ url_for('about_us') }}">Rólunk</a></li>
+                <li><a href="{{ url_for('kereso', kereso=0) }}">Galéria</a></li>
+                <li><a href="{{ url_for('contact') }}">Elérhetőség</a></li>
+            </ol>
+        </div>
+    </div>
+    <div class="main-head">
+        <h1>Ingyenes helyszíni</h1>
+        <h3>felmérés és árajánlat!</h3>
+    </div>
+
+<div class="main-container">
+
+        <div class="welcome">
+            <div class="dropdown-container">
+                <div class="dropdown">
+                  <button class="dropbtn">Típusok</button>
+                  <div class="dropdown-content">
+                    <a href="/galeria/0">Mindegyik</a>
+                    <a href="/galeria/1">Kerti faházak</a>
+                    <a href="/galeria/2">Teraszfedések</a>
+                    <a href="/galeria/3">Kocsibeállók</a>
+                  </div>
+            </div>
+        </div>
+            <div class="welcome-text">A szobafestéstől a parkettázáson át, egészen a kerti faházak építéséig állunk kedves ügyfeleink rendelkezésére!</div>
+            <div class="welcome-email"><a href = "mailto: piktorfiaibt@gmail.com">piktorfiaibt@gmail.com</a></div>
+            <div class="welcome-phone"><a href="tel: 06308823087">30 / 882 3087</a></div>
+        </div>
+
+{% endblock %}
+
+{%  block body %}
+    <div class="cards">
+        {% for card in main_cards %}
+            <div class="card-{{ card.type_id }}">
+                <img alt="{{ card.img }}" class="card-image" src="../static/img/{{ card.img }}" width="100%" height="274px"/><br>
+                <div id="div-card-type-{{ card.type_id }}"><a href="/galeria/{{ card.type_id }}" class="card-type">{{ card.type }}</a></div>
+                <div class="card-format">
+                    <p class="card-name"><strong>{{ card.name }}</strong></p>
+                    <p class="card-message">{{ card.message }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</div>
+{% block footer %}
+    <div class="footer">
+        <div class="footer-container">
+            <p>&#9672 Kövess minket <a href="#" class="facebook">Facebook</a> -on is!</p>
+            <p>&#9635 <a href="{{ url_for('about_us') }}" class="foot-a">Rólunk</a> &#9635 <a href="{{ url_for('kereso', kereso=0) }}" class="foot-a">Galéria</a> &#9635 <a href="{{ url_for('contact') }}" class="foot-a">Elérhetőség</a></p>
+            <p><a href = "mailto: piktorfiaibt@gmail.com" class="foot-a">&#9672 piktorfiaibt@gmail.com</a></p>
+            <p><a href="tel: 06308823087" class="foot-a">&#9672 30 / 882 3087</a></p>
+            <p>&#9673 Created by <a href="#" class="foot-a">Ati</a></p>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>

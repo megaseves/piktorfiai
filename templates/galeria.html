@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block body %}
+
+    <div class="cards">
+        {% for card in cards %}
+            <div class="card-{{ card.type_id }}">
+                <img alt="{{ card.img }}" class="card-image" src="../static/img/{{ card.img }}" width="100%" height="274px"/><br>
+                <div id="div-card-type-{{ card.type_id }}"><a href="/galeria/{{ card.type_id }}" class="card-type">{{ card.type }}</a></div>
+                <div class="card-format">
+                    <p class="card-name"><strong>{{ card.name }}</strong></p>
+                    <p class="card-message">{{ card.message }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
